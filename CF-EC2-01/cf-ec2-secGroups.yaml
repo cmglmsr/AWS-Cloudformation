@@ -1,0 +1,90 @@
+
+# EC2 Instance with 2 security groups and an elastic IP attached
+
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    0c1bb4ca-013a-4019-a6fd-d0651f79db1b:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 530
+        'y': 130
+      z: 0
+      isassociatedwith:
+        - a5f49c93-2d7f-4775-9af5-f98bd6202a9f
+        - a2fc784c-ede6-4503-b776-4f8c7a1aa86c
+    1ebfb957-144b-48fc-94e8-69fdeefbfa74:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 638
+        'y': 131
+      z: 0
+      isassociatedwith:
+        - 0c1bb4ca-013a-4019-a6fd-d0651f79db1b
+    8f752322-57f9-400e-aaf0-78b870a968d5:
+      source:
+        id: 1ebfb957-144b-48fc-94e8-69fdeefbfa74
+      target:
+        id: 0c1bb4ca-013a-4019-a6fd-d0651f79db1b
+      z: 1
+    a5f49c93-2d7f-4775-9af5-f98bd6202a9f:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 414
+        'y': 247
+      z: 0
+    a2fc784c-ede6-4503-b776-4f8c7a1aa86c:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 400
+        'y': 40
+      z: 0
+    6fb19642-2819-4ba0-8384-ba3c902e5ba3:
+      source:
+        id: 0c1bb4ca-013a-4019-a6fd-d0651f79db1b
+      target:
+        id: a5f49c93-2d7f-4775-9af5-f98bd6202a9f
+      z: 2
+    f3301595-ddbd-44a9-a92d-00125cf1db59:
+      source:
+        id: 0c1bb4ca-013a-4019-a6fd-d0651f79db1b
+      target:
+        id: a2fc784c-ede6-4503-b776-4f8c7a1aa86c
+      z: 3
+Resources:
+  EC2EIPR0VV:
+    Type: 'AWS::EC2::EIP'
+    Properties:
+      InstanceId: !Ref MyEC2Instance
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 1ebfb957-144b-48fc-94e8-69fdeefbfa74
+  EC2SG2CB5D:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: a5f49c93-2d7f-4775-9af5-f98bd6202a9f
+  EC2SG1XXRI:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: a2fc784c-ede6-4503-b776-4f8c7a1aa86c
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      SecurityGroupIds:
+        - !Ref EC2SG2CB5D
+        - !Ref EC2SG1XXRI
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 0c1bb4ca-013a-4019-a6fd-d0651f79db1b
